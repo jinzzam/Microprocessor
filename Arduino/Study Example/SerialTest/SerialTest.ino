@@ -1,18 +1,13 @@
-const int LED = 7;
-int sw = false;
+const int WATERPIN = 0;
+int val = 0;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(LED, OUTPUT);
+  pinMode(WATERPIN, OUTPUT);
 }
 
 void loop() {
-  Serial.println("hello world");
-  delay(1000);
-  digitalWrite(LED, sw);
-  if(Serial.available()){
-    char ch = Serial.read();
-    Serial.println(ch);
-    if(ch == 'a') sw=!sw;
-  }
+  val = analogRead(WATERPIN);
+  Serial.println(val);
+  delay(500);
 }
